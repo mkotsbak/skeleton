@@ -2,7 +2,7 @@ package io.widok.server.controller
 
 import io.widok.common.model
 import io.widok.common.protocol
-import io.widok.common.Response
+import io.widok.common.protocol.Response
 import io.widok.server.dictionary.WordNet
 
 class Dictionary extends protocol.Dictionary {
