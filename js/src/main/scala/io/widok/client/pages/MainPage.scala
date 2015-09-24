@@ -10,14 +10,19 @@ import org.widok.html._
  * Created by marius on 9/23/15.
  */
 case class MainPage() extends CustomPage with DefaultHeader {
+    val entries = Map(
+        "Widok demo" -> Routes.widokDemo(),
+        "User registry" -> Routes.userRegistry(),
+        "Dictionary" -> Routes.dictionary()
+    )
+
     override def body(route: InstantiatedRoute): View = {
         ul(
-            li(
-                a("User registry").url(Routes.userRegistry().uri())
-            ),
-            li(
-                a("Dictionary").url(Routes.dictionary().uri())
-            )
+            entries.map { case (name, route) =>
+                li(
+                    a(name).url(route.uri())
+                )
+            }.toSeq :_*
         )
     }
 }

@@ -7,10 +7,11 @@ object Routes {
     val dictionary = Route("/dict", pages.Dictionary)
     val dictionaryLookUp = Route("/dict/:word", pages.Dictionary)
     val userRegistry = Route("/userReg", pages.UserRegistry)
+    val widokDemo = Route("/widokDemo", pages.WidokDemo)
     val notFound = Route("/404", pages.NotFound)
 
     val routes = Set(
-        mainPage, userRegistry, dictionary, dictionaryLookUp, notFound
+        mainPage, userRegistry, dictionary, dictionaryLookUp, widokDemo, notFound
     )
 }
 

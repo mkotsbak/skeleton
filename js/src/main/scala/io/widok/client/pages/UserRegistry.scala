@@ -20,12 +20,14 @@ import pl.metastack.metarx.{Opt, Var, Buffer, ReadBuffer}
  * Created by marius on 9/23/15.
  */
 case class UserRegistry() extends CustomPage with DefaultHeader {
+    val selectedUser = Opt[User]()
 
     // Like React/Angular component
     def userRow(user: User) = {
         tr(
             td(user.firstName).hover(Color.Blue),
-            td(user.lastName).hover(Color.Cyan)
+            td(user.lastName).hover(Color.Cyan),
+            button("Select").onClick( _ => selectedUser := user)
         )
     }
 
@@ -45,15 +47,22 @@ case class UserRegistry() extends CustomPage with DefaultHeader {
             Server[Protocol].userRegistry.lookupFirstNamePart("Test").call()
         )
 
-        table(
-            thead(
-                tr(
-                    td("First name").hover(Color.Yellow),
-                    td("Last name").hover(Color.Green)
+        div(
+            table(
+                thead(
+                    tr(
+                        td("First name").hover(Color.Yellow),
+                        td("Last name").hover(Color.Green)
+                    )
+                ),
+                tbody(
+                        users map userRow
                 )
             ),
-            tbody(
-                    users map userRow
+
+            div(
+                p("User details"),
+                p("User", selectedUser.mapOrElse(_.toString, "None"))
             )
         )
     }
