@@ -6,7 +6,7 @@ object Routes {
     val mainPage = Route("/", pages.MainPage)
     val dictionary = Route("/dict", pages.Dictionary)
     val dictionaryLookUp = Route("/dict/:word", pages.Dictionary)
-    val userRegistry = Route("/:userReg", pages.UserRegistry)
+    val userRegistry = Route("/userReg", pages.UserRegistry)
     val notFound = Route("/404", pages.NotFound)
 
     val routes = Set(
