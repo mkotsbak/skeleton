@@ -79,7 +79,12 @@ case class UserRegistry() extends CustomPage with DefaultHeader {
 
             div(
                 p("User details"),
-                p("User: ", selectedUser.mapOrElse(_.toString, "None")),
+                div("User: ", selectedUser.mapOrElse ( user =>
+                    p(
+                        user.firstName, user.lastName
+                    )
+                    , p("None"))
+                ),
                 ReactDynamic(GoogleMap.component, mapProps)
             )
         )
