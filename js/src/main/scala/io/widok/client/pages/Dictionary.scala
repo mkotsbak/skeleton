@@ -6,7 +6,7 @@ import org.widok.bindings.Bootstrap._
 import org.widok.html._
 
 import io.widok.client._
-import io.widok.common.Response
+import io.widok.common.protocol.Response
 import pl.metastack.metarx.Var
 
 import scalajs.concurrent.JSExecutionContext.Implicits.runNow

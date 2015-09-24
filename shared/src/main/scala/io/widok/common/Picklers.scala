@@ -1,5 +1,7 @@
 package io.widok.common
 
+import io.widok.common.protocol.{EmptyResponse, Response}
+
 /**
  * Created by marius on 9/23/15.
  */

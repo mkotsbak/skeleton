@@ -1,4 +1,4 @@
-package io.widok.server.userregistry
+package io.widok.server.controller
 
 import io.widok.common.model.UserRegistry.User
 import io.widok.common.protocol.UserRegistry

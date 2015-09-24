@@ -10,7 +10,8 @@ import spray.routing.SimpleRoutingApp
 import io.widok.common.{Protocol, Picklers}
 
 class Controllers extends Protocol {
-  val dictionary = new controller.Dictionary()
+    val dictionary = new controller.Dictionary()
+    val userRegistry = new controller.UserRegistryImpl()
 }
 
 object AutowireServer extends autowire.Server[upickle.Js.Value, upickle.Reader, upickle.Writer] {

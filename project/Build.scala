@@ -79,7 +79,9 @@ object Build extends sbt.Build {
     )
     .jsSettings(
       libraryDependencies ++= Seq(
-        "io.github.widok" %%% "widok" % "0.2.3" withSources() withJavadoc(),
+        "pl.metastack" %% "metarx" % "0.1.3-SNAPSHOT" withSources() withJavadoc(),
+        //"io.github.widok" %%% "widok" % "0.2.3" withSources() withJavadoc(),
+        "io.github.widok" %%% "widok" % "0.3.0-SNAPSHOT" withSources() withJavadoc(),
         "com.lihaoyi" %%% "upickle" % "0.2.8",
         "com.lihaoyi" %%% "autowire" % "0.2.5",
         "org.webjars" % "bootstrap-sass" % "3.3.1",
