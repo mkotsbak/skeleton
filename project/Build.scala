@@ -85,9 +85,14 @@ object Build extends sbt.Build {
         "com.lihaoyi" %%% "upickle" % "0.2.8",
         "com.lihaoyi" %%% "autowire" % "0.2.5",
         "org.webjars" % "bootstrap-sass" % "3.3.1",
-        "org.webjars" % "font-awesome" % "4.3.0-1"
+          "org.webjars" % "font-awesome" % "4.3.0-1",
+          "com.github.chandu0101.scalajs-react-components" %%% "core" % "0.2.0-SNAPSHOT",
+          "io.github.widok" %%% "widok-scalajs-react-wrapper" % "0.1.0-SNAPSHOT" withSources() withJavadoc()
       )
     , persistLauncher := true
+    , jsDependencies := Seq (
+            "org.webjars" % "react" % "0.12.2" / "react-with-addons.js" commonJSName "React"
+        )
     , skip in packageJSDependencies := false
     , artifactPath in (Compile, packageScalaJSLauncher) := jsPath / "launcher.js"
     , artifactPath in (Compile, packageJSDependencies) := jsPath / "deps.js"
