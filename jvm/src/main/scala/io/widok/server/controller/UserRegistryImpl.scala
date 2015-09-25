@@ -16,7 +16,10 @@ class UserRegistryImpl extends UserRegistry {
         newUser
     }
 
-    override def lookupFirstNamePart(firstnamePart: String): Seq[User] = {
-        users.filter(_.firstName.startsWith(firstnamePart))
+    override def lookupFirstNamePart(firstnamePart: String, exact: Boolean): Seq[User] = {
+        users.filter(user =>
+            if (exact) user.firstName == firstnamePart
+            else user.firstName.startsWith(firstnamePart)
+        )
     }
 }

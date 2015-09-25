@@ -24,8 +24,6 @@ import pl.metastack.metarx.{Opt, Var, Buffer, ReadBuffer}
 case class UserRegistry() extends CustomPage with DefaultHeader {
     val selectedUser = Opt[User]()
 
-    val searchQuery = Var("")
-
     val defaultLatLng = LatLng(63, 10)
     val latlng = selectedUser.mapOrElse(user => LatLng(user.lat, user.lon), defaultLatLng)
 
@@ -58,13 +56,19 @@ case class UserRegistry() extends CustomPage with DefaultHeader {
     }
 
     override def body(route: InstantiatedRoute): View = {
-        val users: ReadBuffer[User] = searchQuery.distinct.flatMapBuf { query => Buffer.from(
-            Server[Protocol].userRegistry.lookupFirstNamePart(query).call()
-            )
+        val searchQuery = Var("")
+        val exact = Var(false)
+
+        val users: ReadBuffer[User] = searchQuery.distinct.flatMapBuf { query =>
+            exact.flatMapBuf { ext =>
+                Buffer.from(
+                    Server[Protocol].userRegistry.lookupFirstNamePart(query, ext).call()
+                )
+            }
         }
 
         div(
-            p("First name: ", text().bind(searchQuery)),
+            p("First name: ", text().bind(searchQuery)), "exact: ", checkbox().bind(exact),
             table(
                 thead(
                     tr(
