@@ -79,15 +79,16 @@ object Build extends sbt.Build {
     )
     .jsSettings(
       libraryDependencies ++= Seq(
-        "pl.metastack" %% "metarx" % "0.1.3-SNAPSHOT" withSources() withJavadoc(),
-        //"io.github.widok" %%% "widok" % "0.2.3" withSources() withJavadoc(),
-        "io.github.widok" %%% "widok" % "0.3.0-SNAPSHOT" withSources() withJavadoc(),
+        "pl.metastack" %% "metarx" % "0.1.4-SNAPSHOT" withSources() withJavadoc(),
+        "io.github.widok" %%% "widok" % "0.2.3" withSources() withJavadoc(),
+//        "io.github.widok" %%% "widok" % "0.3.0-SNAPSHOT" withSources() withJavadoc(),
         "com.lihaoyi" %%% "upickle" % "0.2.8",
         "com.lihaoyi" %%% "autowire" % "0.2.5",
         "org.webjars" % "bootstrap-sass" % "3.3.1",
           "org.webjars" % "font-awesome" % "4.3.0-1",
           "com.github.chandu0101.scalajs-react-components" %%% "core" % "0.2.0-SNAPSHOT",
           "io.github.widok" %%% "widok-scalajs-react-wrapper" % "0.1.0-SNAPSHOT" withSources() withJavadoc()
+,"io.github.mkotsbak" %%% "scalajs-qcode-decoder" % "0.1.0-SNAPSHOT" withSources() withJavadoc()
       )
     , persistLauncher := true
     , jsDependencies := Seq (
